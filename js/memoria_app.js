@@ -33,6 +33,6 @@ let tileArray = [
 	},
 	{
 		name: "mama_lizzy",
-		picture "../images/mama_lizzy.jpg"
+		picture: "../images/mama_lizzy.jpg"
 	}
 ]

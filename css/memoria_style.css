@@ -1,0 +1,53 @@
+:root {
+	/*font*/
+	--font-header: 'Orbitron';
+	--font-text: 'Roboto';
+	--fontweight-bold: 900;
+	/*kleuren*/
+	--color-snow: rgb(255, 250, 250);
+	--color-whitesmoke: rgb(245,245,245);
+	--color-steelblue: rgb(70,130,180);
+	--color-dodgerblue: rgb(30,144,255);
+	--color-menu: rgba(105, 105, 105, 0.9);
+	--color-schadow: rgba(0, 0, 0, 0.2);
+	--color-gainsboro: rgb(220,220,220);
+	--color-lightblack: hsl(0, 0%, 15%);
+	--color-lightgrey: rgb(112, 112, 110);
+	--color-black: rgb(0,0,0);
+	/*background*/
+	--background-container: url(../images/grid_background2.png);
+}
+body {
+	background-color: var(--color-whitesmoke);
+	scroll-behavior: smooth;
+}
+#memoria_game {
+	width: 100%;
+	max-width: 40em;
+	margin: auto;
+	padding: 1em .5em 1em .5em;
+	box-sizing: border-box;
+}
+#memoria_header {
+	background-color: var(--color-dodgerblue);
+	font-family: var(--font-header);
+	color: var(--color-whitesmoke);
+	height: 4em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#memoria_header h1{
+	margin: 0;
+}
+#memoria_container {
+	background-image: var(--background-container);
+	background-size: cover;
+	background-position: center;
+	min-height: 20em;
+	padding: 1em;
+	box-sizing: border-box;
+}
+#memoria_gridframe {
+
+}

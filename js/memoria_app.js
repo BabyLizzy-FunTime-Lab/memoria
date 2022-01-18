@@ -15,7 +15,7 @@ let win_count = 4;
 // Global Array
 let tiles_selected = [];
 let tiles_found = [];
-let pair_count = 0;
+// let pair_count = 0;
 ///////////////////
 
 
@@ -75,11 +75,13 @@ function shuffle(array) {
 function check_pair() {
 	if (tiles_selected.length == 2) {
 		if (tiles_selected[0].name === tiles_selected[1].name) {
+			tiles_found.push(tiles_selected[0].name);
 			tiles_selected = [];
-			pair_count++;
-			if (pair_count == win_count) {
+			// pair_count++;
+			if (tiles_found.length == win_count) {
 				alert("You won");
-				pair_count = 0;
+				// pair_count = 0;
+				tiles_found = [];
 				// remove old tiles
 				document.querySelectorAll(".memoria_tile").forEach( function(element) {
 					element.remove();
@@ -97,7 +99,17 @@ function check_pair() {
 		}
 	}
 }
-
+function foundQuery(clicked_tile) {
+	tiles_found.forEach( function(found) {
+		if (tiles_found.length == 0) {
+			return true;
+		} else if (found === clicked_tile) {
+			return false;
+		} else {
+			return true;
+		}
+	})
+}
 // create tiles in gridframe
 tileArray.forEach(createGrid);
 function createGrid(tiledata, index) {
@@ -107,10 +119,20 @@ function createGrid(tiledata, index) {
 	new_tile.setAttribute("class", "memoria_tile");
 	new_tile.style.backgroundImage = facedown_img;
 	new_tile.addEventListener("click", function(event) {
+		console.log(tiles_found);
+		
 		new_tile.style.backgroundImage = tiledata.picture;
+
 		tiles_selected.push({name: tiledata.name, id: index});
 		console.log(tiles_selected);
-		setTimeout(check_pair, 500);	
+		setTimeout(check_pair, 500);
+
+		// if (foundQuery(tiledata.name)) {
+		// 	new_tile.style.backgroundImage = tiledata.picture;
+		// 	tiles_selected.push({name: tiledata.name, id: index});
+		// 	console.log(tiles_selected);
+		// 	setTimeout(check_pair, 500);
+		// }
 	})
 	grid.appendChild(new_tile); 
 }

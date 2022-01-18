@@ -10,6 +10,8 @@ function elementClass(class_name) {
 }
 // Global variabels
 let facedown_img = "url(images/face_down.jpg)";
+let grid = elementID("memoria_gridframe");
+let win_count = 4;
 // Global Array
 let tiles_selected = [];
 let tiles_found = [];
@@ -51,7 +53,23 @@ let tileArray = [
 		picture: "url(images/mama_lizzy.jpg)"
 	}
 ]
+function shuffle(array) {
+  var m = array.length, t, i;
 
+  // While there remain elements to shuffle…
+  while (m) {
+
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
 
 // Check for pair
 function check_pair() {
@@ -59,11 +77,17 @@ function check_pair() {
 		if (tiles_selected[0].name === tiles_selected[1].name) {
 			tiles_selected = [];
 			pair_count++;
-			if (pair_count == 4) {
+			if (pair_count == win_count) {
 				alert("You won");
 				pair_count = 0;
+				// remove old tiles
+				document.querySelectorAll(".memoria_tile").forEach( function(element) {
+					element.remove();
+				});
 				// randomize array
+				shuffle(tileArray);
 				// load new grid
+				tileArray.forEach(createGrid);
 			}
 		} else {
 			elementID(tiles_selected[0].id).style.backgroundImage = facedown_img;
@@ -75,7 +99,6 @@ function check_pair() {
 }
 
 // create tiles in gridframe
-let grid = elementID("memoria_gridframe");
 tileArray.forEach(createGrid);
 function createGrid(tiledata, index) {
 	let new_tile = elementMaker("div");

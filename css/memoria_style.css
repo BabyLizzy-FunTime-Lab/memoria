@@ -23,9 +23,9 @@ body {
 }
 #memoria_game {
 	width: 100%;
-	max-width: 40em;
-	height: calc(100vh - 4em);
-	max-height: 60em;
+	max-width: 30em;
+	/*height: calc(100vh - 4em);*/
+	/*max-height: 60em;*/
 	margin: auto;
 	padding: 1em .5em 1em .5em;
 	box-sizing: border-box;
@@ -54,9 +54,16 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+	height: calc(100vh - 9em);
+	max-height: 35em;
+	max-width: 20em;
+	margin: auto;
 }
 .memoria_tile {
-	display: flex;
-	flex-basis: 25%;
-	flex-direction: column;
+	flex: 0 0 50%;
+	background-color: var(--color-steelblue);
+	border: .2em solid var(--color-dodgerblue);
+	box-sizing: border-box;
+	background-size: cover;
+	background-position: center;
 }
